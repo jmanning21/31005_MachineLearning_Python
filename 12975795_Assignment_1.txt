@@ -1,0 +1,133 @@
+# Assignment 1: Understanding the Literature
+#### Julia Manning | 12875795
+
+---
+
+# Review Report on Eigenfaces vs. Fisherfaces: Recognition Using Class Specific Linear Projection
+
+## Introduction
+Within the past few decades, there have been numerous pattern recognition techniques made available for 
+use that cater for images with different variations, mainly lighting and facial poses. The paper not only 
+discusses and compares three previously established methods, but also introduces a new method based on 
+Fisher’s Linear Discriminant. This method uses dimensionality reduction to reduce the sensitivity to 
+changes in light and facial poses, ultimately resulting in a lower error rate when using a range of 
+database images. This report crtiques the contents and layout of the paper, whilst also providing suggestions 
+for other domains where this method could be used in the real world.
+
+## Content
+The authors in the paper propose a new approach in which facial recognition is achieved despite the more 
+extreme alterations made on the images. The new approach is successful if the given image is recognised in 
+differing light intensities, light directions, number of light sources, facial expressions and eye wear. 
+The proposed method is derived from Fisher’s Linear Discriminant (FLD), hence being named Fisherfaces method, 
+and uses a combination of nearly orthogonal projection directions to maintain discriminability and maximising 
+the ratio of between-class scatter matrices to the within-class scatter matrices. The method also benefits 
+from two given observations which outline...
+
+Currently, there has been little success with pattern recognition methods and techniques that can produce a 
+successful outcome from images that involve intense light variations. This paper delivers a comparison of 
+three different pattern recognition methods (Correlation, Eigenfaces, and Linear Subspaces) against their own 
+proposed method (Fisherfaces), as they aim recognise the images of people under extreme variations of light 
+intensities and direction.
+
+## Innovation
+At the time of the research there were several pattern and facial recognition techniques and methods that were 
+successful in recognise ideal database images. The problem with these methods were that they were not very 
+transferrable into real-world situations. There was often difficulty in recognising images if there was a 
+significant change to light intensity or direction displayed on the image, as natural shadows were created, and 
+significant facial features used to assist in the classification were missed. This ultimately resulted in the 
+number of reliable techniques for recognition under more extreme variations more difficult to find (Belhumeur 
+et.al, 1997).
+
+The paper establishes that the authors have developed a new facial recognition method, named Fisherface, which 
+is derived from FLD. The Fisherface method is not only explained and discussed, but it is also compared with 
+two traditional and well-known methods and an alternate, lesser-known method.
+
+## Technical Quality
+The technical development in the paper is of high quality. The authors provided numerous experiments to evaluate 
+their proposed recognition method against other popular methods. The success of each method in the experiment was 
+determined by the error rate.
+
+The authors supported their method through a number of experiments that were carried out between the four pattern 
+recognition methods using two databases. The first database from the Harvard Robotics Laboratory contained images 
+of varied lighting, whilst the second database from Yale contained images with a variation in both lighting and 
+facial expressions. Each subset of images contains a varied number of images, camera axis angles, light 
+directions and light sources. 
+
+To ensure consistency between each experiment, several variables were kept constant. These variables included; a 
+nearest neighbour classification, all training images were projected into the features space, and all images 
+excluded the contour of the head and were cropped appropriately. Extra consideration was taken when testing the 
+Correlation and Eigenface methods, ensuring that they contained normalised images with a zero mean and unit 
+variance. The additional cleaning on the two methods may be seen as a slight bias by some, as the data for these 
+methods were altered to improve the overall performance against the other two methods. 
+
+Overall, the paper contained three different experiments highlighting the difference in error rate between the 
+four methods in variation in lighting and variation in facial expression, eye wear and lighting. Some of the 
+experiment results can be seen below:
+
+Method|Reduced Space|Subset 1 Error Rate (%)|Subset 2 Error Rate (%)|Subset 3 Error Rate (%)
+---|---|---|---|---
+Eigenface|4|0.0|31.1|47.7
+Eigenface|10|0.0|4.4|41.5
+Eigenface w/o 1st 3|4|0.0|13.3|41.5
+Eigenface w/o 1st 3|10|0.0|4.4|27.7
+Correlation|29|0.0|0.0|33.9
+Linear Subspace|15|0.0|4.4|9.2
+Fisherface|4|0.0|0.0|4.6
+__Relative Performance under extreme light source conditions using Subsets 1-3.__
+
+Method|Reduced Space|Subset 2 Error Rate (%)|Subset 3 Error Rate (%)|Subset 4 Error Rate (%)
+---|---|---|---|---
+Eigenface|4|53.3|75.4|52.9
+Eigenface|10|11.11|33.9|20.0
+Eigenface w/o 1st 3|4|31.11|60.0|29.4
+Eigenface w/o 1st 3|10|6.7|20.0|12.9
+Correlation|129|0.0|21.54|7.1
+Linear Subspace|15|0.0|1.5|0.0
+Fisherface|4|0.0|0.0|1.2
+__Relative Performance under intermediate light source conditions using Subsets 2-4.__
+
+Additional experiments should have been used to further support the success of the proposed method over the other 
+methods, however, due to the limitations of the method itself the experiments and subsquent results provided 
+throughout the paper were sufficient. The results across all the experiments displayed a significantly lower 
+error rate when compared to the other methods, particularly the most common and well-known Eigenface method.
+
+## Application and X-Factor
+I find the proposed Fisherface method promising within the field of pattern recognition. In using a lower 
+dimensional feature speace, variation in light intensity and direction reduces the error rate, which has the 
+opportunity to be successfully used in real-world situations.
+
+The proposed method, Fisherfaces, could be of benefit in other domains. As the method focuses on the light 
+intensity, naturally created shadows, and fixed poses within the given image to recognise a face, these similar 
+techniques can be used for vehicle plate recognition. The vehicle registration plates are in a rectangular shape, 
+have a 6-character combination of 36 alpha-numeric characters, and are often displayed in the lower half of the 
+front of the car. In recognising the registration plate, it could be determined whether the vehicle is currently 
+registered or not. This could be taken further and linked with speed cameras; quickly capturing and recognising 
+the prosecutor's registration plate in which a fine will be allocated to the driver.
+
+One suggestion for further development of this method would involve successful pattern recognition on faces with 
+a larger variety of facial poses and angles. It is highlighted that the proposed method is experimented with a 
+limited amount of varied facial poses, therefore making it apparent that a larger variety of facial poses should 
+be used in next step for further developing this method. Additionally, the angle at which the image was taken 
+could be varied as well, to replicate more real-world situations and expand the training set and capabilities of 
+the proposed method.
+
+## Presentation
+The overall structure of the paper was clear. The sections were divided into appropriate sections and headings, 
+helping to create a flow in the paper similar to that of one's thinking process. As a variety of well-known and 
+alternate methods were discussed throughout the paper, the authors clearly stated what the given method was, how 
+it would achieve the end goal, as well as any significant benefits or disadvantages made apparent. The paper, 
+however, did require additional research as several algorithms and acronyms were used throughout to convey how 
+the final method was achieved. This may make it difficult for an individual who is new to machine learning or 
+pattern recognition to grasp the concept of the methods within the paper, however the acronyms used are commonly 
+used and can be understood clearly if researched further. An attractive point in the paper included the use of a 
+variety of images, tables and algorithms to help convey the stated arguments. In using multiple mediums, the 
+reader was able to grasp a better understanding of what was being discussed. 
+
+## References
+Belhumeur, P.N., Hespanha, J.P. & Kriegman, D.J. 1997, 'Eigenfaces vs. Fisherfaces: Recognition Using Class 
+Specific Linear Projection', *IEEE Transactions on Pattern Analysis and Machine Intelligence*, vol. 19, no.7, 
+pp. 711-720.
+Park, J., Park, H. & Park, J. 2017, 'Distributed eigenfaces for massive face image data', *Multimedia Tools and 
+Applications*, vol. 76, no. 24, pp.25983-25998.
+Vijaya Kumar, B., Savvides, M. & Xie, C. 2006, 'Correlation Pattern Recognition for Face Recognition', 
+*Proceedings of the IEEE*, vol. 94, no. 11, pp. 1963-1976.
