@@ -248,20 +248,19 @@ the output. Additional columns should also be used to help categorise the column
 and "Cabin"), as this may help with the overall accuracy of the classifier.
 
 ###Ethical Justification
-In practice, we are trying to create a set of numerous black boxes and choose the one with the highest precision. 
-We need a lot of data and an algorithm to build these. From this information, the algorithm learns. Each black box 
-in a set has the same algorithm in a slightly distinct variant. Then we choose the most precise version. Machine 
-learning algorithms are now finding their way into countless apps, some of which have a major effect on human 
-society. This is a classic statistical problem. If you have a big quantity of information and then compare one set 
-of information to another, you may discover instances that appear to be connected together. Not only are machine 
-learning algorithms far from ideal, they come with no estimate of their predictions ' uncertainty. This can be 
-shown as our accuracy is 82% but there are many outliers. The title implies another issue with machine learning. 
-It's machine learning. It is not always the same way that humans and machines "believe." I will look briefly at 
-the perception issue to demonstrate this. In the field of machine vision, this is essential in which a robot views 
-its environment and makes choices about what it sees. The apporach that was used, was the utalitarian approach, as 
-this assesses an action in terms of its consequences or outcomes. Utilitarianism is a normative ethical concept 
-which only places the locus of right and incorrect on the results. A judgement of the potential negative impact of 
-misusing this classifier was made, and it was determined that the risk and impact would be significantly low.
+The aim of the ID3 Tree Building Algorithm is to produce a model that returns the a high accuracy. When adjusting the parameters 
+to the model, the designated software engineer may produce in-direct bias on the model's output, affecting the overall integrity 
+of the model itself. When testing the model using alternative datasets, this may become a problem if the model has bias tendencies. 
+This could result in unnecessary misclassification, which may have an associated risk factor attached. If the risk factor is high 
+and the individual outcomes are misclassified, this may have detrimental effects on individuals, groups or organisations, depending 
+on what dataset the model is using. In this way, using the Utilitarian Approach would be most appropriate to use, as the model 
+should reflect and benefit the majority of individuals, rather than focusing on individual gain. This approach will aid in reducing 
+the overall potential bias within the given model. To achieve this, it is recommended that multiple different datasets are used when
+testing the model, and more than one software developer produces the final model. 
+
+The produced ID3 Tree Building Algorithm above was developed by more than one individual to ensure that the bias was kept to a minimum.
+A judgement of the potential negative impact of misusing this classifier was made, and it was determined that the risk and impact would 
+be significantly low.
 
 ###Video Pitch
 Link to video pitch via YouTube: https://youtu.be/Sbe6KTzjJPg
