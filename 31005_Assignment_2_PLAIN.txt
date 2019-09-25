@@ -1,0 +1,277 @@
+#Assignment 2: Practical Machine Learning Project
+####Affnan Amir (13528841) and Julia Manning (12875795)
+
+###Introduction
+In this assignment there were many classifiers developed during the process of analysing the dataset using Python.
+They were many different classifiers we have used but the algorithm chosen for this project is the ID3 Decision 
+Tree building algorithm. The chosen input dataset is *titanic.csv* (which can be accessed through the URL provided
+in the Appendix). The problem is that whether the chosen classifier can predict the survival rate of individuals 
+using the given dataset. A binary decision tree is a structure based on a sequential decision process. Starting 
+from the root, a feature is evaluated, and one of the two branches is selected. This procedure is repeated until 
+a final leaf is reached, which normally represents the classification target. The output which will be produced 
+from this classifier includes the following from using both the Gini Index and the Entropy Index; an array of the 
+predicted values, confusion matrix, accuracy score, and a classification report. The Decision trees seem to be 
+simpler in their dynamics, however, if the dataset is able to be split, while keeping an internal balance, the 
+overall process is intuitive and rather fast in its predictions. Using the decision tree is powerful prediction 
+to determine accurately and is also commonly used in algorithms as a classifier. Decision tree can explain exactly 
+why a specific prediction was made making it a good use for operational use.
+
+###Exploration
+An information structure is a specific method for sorting out information in a PC with the goal that it tends to 
+be utilized adequately. Bits of the raw data had to be taken out such as different attributes and their instances 
+which were inconsistent. For example, some formats had to be adjusted as they weren’t consistent throughout the 
+dataset and had to be accustomed to the correct format. This is the why that the data was cleaned so that we 
+could progress to the code. 
+For some cases I was altering between integers and strings and moving back and forth to strings and integers for 
+particular attributes. Some other problems with the data mining was some bits of the data was poor quality, 
+inadequate data size and poor illustration of data sampling. Dealing with very big datasets that require 
+distributed approaches was also a problem when data was mined. Finally, what else I thought was difficult was 
+that the processing of large, complex and unstructured data and placing it into a structured format.
+Data pre-processing is a data mining technique which requires transforming data that is raw into a readable and 
+understandable format, data pre-processing is essential before we even start mining the data to find any 
+real-world solutions from the raw data. It is also essential because it leads to an accurate prediction of 
+different classifications and models. Big data or real-world data is often unstructured or incomplete, different 
+trends, and sometime may be inconsistent. Also, we can see that there is a lacking attribute value, which are the 
+reason why the data becomes noisy meaning that it contains errors or outliers. Data pre-processing solves these 
+problems.
+
+###Methodology
+There are vital steps that need to be achieved in order for the ID3 Tree building algorithm to be achieved. 
+The steps are explained below and are followed by the relevant code snippets. 
+1.The first step required is the importing of the required packages, which include; numpy, pandas, and sklearn.
+import numpy as np 
+import pandas as pd 
+from sklearn.metrics import confusion_matrix 
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier 
+from sklearn.metrics import accuracy_score 
+from sklearn.metrics import classification_report 
+
+2.The data must be imported and transformed from a csv format into a readable dataframe using the pandas library. 
+3.The required transformations must then be applied to the dataset, in order to adjust the classifier to the given
+dataset. For this dataset, there were some columns that the needed to be removed and added, as well as replacing 
+NULL values with given median values.
+
+# Function importing dataset and cleaning
+def importdata(): 
+  url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
+  # Read the csv and convert to a dataframe
+  d = pd.read_csv(url)
+  df = pd.DataFrame(data=d)
+
+  median_values = df.groupby(['Pclass','Sex'])['Age'].transform('median')
+  df['Age'].fillna(median_values, inplace=True)
+  
+  # Adding and removing specific columns which may help with the accuracy of the accuracy.
+  # Add a Child.Adult column based on the age of the individual
+  df['Child.Adult'] = 'Adult'
+
+  # Child = Age < 13 and Adult = Age >= 13 
+  df['Child.Adult'][df['Age'] < 13.0] = 'Child'
+
+  # Remove 'Name' column as it does not provide any relevant information to the dataset, as all the values are unique
+  del df['Name']
+  # Remove 'Cabin' as there are too many NA values and the remaining values are all unique, make it impossible to determine a suitable replacement for the NA values
+  del df['Cabin']
+
+  # Re-ordering the columns to put the 'Survived' column last
+  df = df[['PassengerId','Pclass','Sex','Age','SibSp','Parch','Ticket','Fare','Embarked','Child.Adult','Survived']]
+  
+  df['Sex'],_ = pd.factorize(df['Sex'])
+  df['Embarked'],_ = pd.factorize(df['Embarked'])
+  df['Child.Adult'],_ = pd.factorize(df['Child.Adult'])
+  df['Ticket'],_ = pd.factorize(df['Ticket'])
+  
+  return df
+
+4.The next step required is to split the data based on the user's input value and recognise what the target 
+variable is. The split was not set as a static value for the purposes of testing and gives the user freedom to 
+interact with the model.
+# function to split the data
+def splitdataset(df,split):
+  # Seperating the target variable 
+    X = df.iloc[:,:-1]
+    Y = df.iloc[:,-1] 
+    test_split = 1 - split
+    
+    # Spliting the dataset into train and test 
+    X_train, X_test, y_train, y_test = train_test_split(  
+    X, Y, test_size = test_split, random_state = 0) 
+    
+    return X, Y, X_train, X_test, y_train, y_test
+
+5.The next step is to create the classifier objects. For this classifier model, two classifier objects have been 
+produced using the Gini Index and the Entropy Index. This is used to compare the two and determine which is the 
+most appropriat eto use for the classifier and the given dataset.
+
+# Function to perform training with giniIndex. 
+def train_using_gini(X_train, X_test, y_train): 
+  
+    # Creating the classifier object 
+    clf_gini = DecisionTreeClassifier(
+        criterion = "gini", random_state = 0,
+        max_depth=3, min_samples_leaf=5) 
+  
+    # Performing training 
+    clf_gini.fit(X_train, y_train) 
+    return clf_gini 
+
+# Function to perform training with entropy. 
+def train_using_entropy(X_train, X_test, y_train): 
+  
+    # Decision tree with entropy 
+    clf_entropy = DecisionTreeClassifier( 
+            criterion = "entropy", random_state = 0, 
+            max_depth = 5, min_samples_leaf = 5) 
+  
+    # Performing training 
+    clf_entropy.fit(X_train, y_train) 
+    return clf_entropy
+
+6.The next step is to write a function that predicts the values. This function also prints and returns the 
+predicted values to the user.
+
+# Function to make predictions 
+def prediction(X_test, clf_object): 
+  
+    # Predicton on test data
+    y_pred = clf_object.predict(X_test) 
+    print("Predicted values:") 
+    print(y_pred) 
+    return y_pred
+
+7.The next step is to calculate the accuracy of the model. This is achieved by using the output from the 
+confusion matrix, which produces a 2-by-2 table of the instances where the predictions are correct and incorrect. 
+The confusion matrix gives the user the four values: True Positive, False Positive, True Negative, and False 
+Negative. A report is also produced, which prints the scores for; precision, recall, F1 and support.
+
+# Function to calculate accuracy 
+def cal_accuracy(y_test, y_pred): 
+      
+    print("Confusion Matrix: ", 
+        confusion_matrix(y_test, y_pred)) 
+      
+    print ("Accuracy : {:.2f}%".format(accuracy_score(y_test,y_pred)*100)) 
+            
+    print("Report : ", 
+    classification_report(y_test, y_pred))
+
+8.One of the final steps is to create a function that runs all the previously executed functions in the correct 
+format and order. This ensures that the model is achieving the required output based on the selected dataset and 
+variables. 
+
+# Driver code 
+def main(var): 
+      
+    # Building Phase 
+    data = importdata()
+    X, Y, X_train, X_test, y_train, y_test = splitdataset(data,var) 
+    clf_gini = train_using_gini(X_train, X_test, y_train) 
+    clf_entropy = train_using_entropy(X_train, X_test, y_train) 
+      
+    # Operational Phase 
+    print("Results Using Gini Index:") 
+      
+    # Prediction using gini 
+    y_pred_gini = prediction(X_test, clf_gini) 
+    cal_accuracy(y_test, y_pred_gini) 
+      
+    print("Results Using Entropy:") 
+    # Prediction using entropy 
+    y_pred_entropy = prediction(X_test, clf_entropy) 
+    cal_accuracy(y_test, y_pred_entropy) 
+
+9.The last step is to allow the user to enter their chosen number for splitting the dat into a training set and a 
+testing set. Error handling must be used to ensure that the classifier is able to continue. Once the user has 
+entered their chosen training data split number and it meets the criteria, the model will run and produce the 
+output specified previously.
+
+# Run the entire code
+while True:
+  try:
+    var = float(input("Enter the training data split number: "))
+    
+    if var <= 0.99 and var >= 0.01:
+      main(var) 
+      
+    else:
+      print("Please enter a number between 0.01 and 0.99")
+    
+  except ValueError:
+    print("This process has been stopped.")
+    print("To continue rerun and enter a number between 0.01 and 0.99")
+    break
+
+###Evaluation
+The model is written in a succinct manner, involving multiple functions that perform different parts of the required steps to achieve 
+the execution of the ID3 Decision Tree building Algorithm. This allows any other users who wish to understand and use the code for 
+future implementation to easily follow the flow of how the algorithm produces the final output. There is also several comments 
+throughout the algorithm to assist the end user's understanding of what each function is achieving. The produced classifier does not 
+include any loop statements, but rather uses specific built-in functions from existing libraries and packages to execute these tasks in 
+an efficient and timely manner.
+
+The efficiency of the algorithm relates to the time and space used when the code is running. The main variables that affect the 
+efficiency of the algorithm relate to simplicity, generality, speed and memory. Various versions have been created in order to reduce 
+the overall run time and memory required to run the classifier. As mentioned before, the simplicity of the code (i.e. in using multiple 
+functions rather than loops) ensures that the algorithm is executed efficiently.
+
+####Results from Testing the Algorithm
+This is the results from the decision tree model, displaying the accuracy outcomes for the changing variables. There were eight (8) 
+tests that were performed on the model to determine whcih parameters produced the highest accuracy percentange. Only one variable was 
+changed for each test to ensure that the test was valid.
+
+Train Data Split (%)|Criterion|Max Depth|Misclassified|Accuracy
+---|---|---|---|---
+60|Entropy|3|70|0.8039
+60|Entropy|5|68|0.8095
+60|Gini|3|67|0.8123
+60|Gini|5|77|0.7843
+70|Entropy|3|48|0.8209
+70|Entropy|5|48|0.8246
+70|Gini|3|48|0.8209
+70|Gini|5|49|0.8172
+
+From the results table above, it is clear that the best classifier object and parameters for this dataset are:
+
+Train Data Split (%)|Criterion|Max Depth|Misclassified|Accuracy
+---|---|---|---|---
+70|Entropy|5|48|0.8246
+
+###Conclusion
+In this assignment we compared two classifer objects: Gini Index and entropy Index, within the ID3 Decision Tree 
+building alogrithm model. This was implemented from scratch using Python, and produced an output that identified 
+if the individuals in the test dataset would survive for both classifier objects. The classifier was tested by 
+adusting a few variables, to help determine which parameters produced a higher accuracy rate. The highest accuracy 
+achieved was 82.46%, which was achieved using a 70/30 data split and the Entropy index. For future implementations, 
+a larger dataset should be used, as ID3 Decision Tree algorithms often over-fit data, which can cause a bias in 
+the output. Additional columns should also be used to help categorise the columns that were removed (i.e. "Name" 
+and "Cabin"), as this may help with the overall accuracy of the classifier.
+
+###Ethical Justification
+In practice, we are trying to create a set of numerous black boxes and choose the one with the highest precision. 
+We need a lot of data and an algorithm to build these. From this information, the algorithm learns. Each black box 
+in a set has the same algorithm in a slightly distinct variant. Then we choose the most precise version. Machine 
+learning algorithms are now finding their way into countless apps, some of which have a major effect on human 
+society. This is a classic statistical problem. If you have a big quantity of information and then compare one set 
+of information to another, you may discover instances that appear to be connected together. Not only are machine 
+learning algorithms far from ideal, they come with no estimate of their predictions ' uncertainty. This can be 
+shown as our accuracy is 82% but there are many outliers. The title implies another issue with machine learning. 
+It's machine learning. It is not always the same way that humans and machines "believe." I will look briefly at 
+the perception issue to demonstrate this. In the field of machine vision, this is essential in which a robot views 
+its environment and makes choices about what it sees. The apporach that was used, was the utalitarian approach, as 
+this assesses an action in terms of its consequences or outcomes. Utilitarianism is a normative ethical concept 
+which only places the locus of right and incorrect on the results. A judgement of the potential negative impact of 
+misusing this classifier was made, and it was determined that the risk and impact would be significantly low.
+
+###Video Pitch
+Link to video pitch via YouTube: https://youtu.be/Sbe6KTzjJPg
+
+###Appendix 
+- Input dataset URL: https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv
+- GitHub URL: 
+https://github.com/jmanning21/31005_MachineLearning_Python/blob/master/Machine_Learning_Assignment_2.ipynb
+- GitHub PLAIN.text URL:
+
+
+
+
