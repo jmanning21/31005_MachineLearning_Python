@@ -271,6 +271,7 @@ Link to video pitch via YouTube: https://youtu.be/Sbe6KTzjJPg
 - GitHub URL: 
 https://github.com/jmanning21/31005_MachineLearning_Python/blob/master/Machine_Learning_Assignment_2.ipynb
 - GitHub PLAIN.text URL:
+https://github.com/jmanning21/31005_MachineLearning_Python/blob/master/31005_Assignment_2_PLAIN.txt
 
 
 
