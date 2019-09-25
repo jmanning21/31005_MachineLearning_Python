@@ -17,23 +17,23 @@ to determine accurately and is also commonly used in algorithms as a classifier.
 why a specific prediction was made making it a good use for operational use.
 
 ###Exploration
-An information structure is a specific method for sorting out information in a PC with the goal that it tends to 
-be utilized adequately. Bits of the raw data had to be taken out such as different attributes and their instances 
-which were inconsistent. For example, some formats had to be adjusted as they weren’t consistent throughout the 
-dataset and had to be accustomed to the correct format. This is the why that the data was cleaned so that we 
-could progress to the code. 
-For some cases I was altering between integers and strings and moving back and forth to strings and integers for 
-particular attributes. Some other problems with the data mining was some bits of the data was poor quality, 
-inadequate data size and poor illustration of data sampling. Dealing with very big datasets that require 
-distributed approaches was also a problem when data was mined. Finally, what else I thought was difficult was 
-that the processing of large, complex and unstructured data and placing it into a structured format.
-Data pre-processing is a data mining technique which requires transforming data that is raw into a readable and 
-understandable format, data pre-processing is essential before we even start mining the data to find any 
-real-world solutions from the raw data. It is also essential because it leads to an accurate prediction of 
-different classifications and models. Big data or real-world data is often unstructured or incomplete, different 
-trends, and sometime may be inconsistent. Also, we can see that there is a lacking attribute value, which are the 
-reason why the data becomes noisy meaning that it contains errors or outliers. Data pre-processing solves these 
-problems.
+A data structure is a particular technique for dealing with data in a PC with the objective that it will in general be used 
+satisfactorily. Bits of the crude information must be taken out, for example, various properties and their occasions which were 
+conflicting. For instance, a few arrangements must be balanced as they weren't predictable all through the dataset and must be familiar 
+with the right position. This is the why that the information was cleaned with the goal that we could advance to the code. 
+
+For certain cases I was adjusting among whole numbers and strings and moving to and fro to strings and whole numbers for specific 
+qualities. Some different issues with the information mining was a few bits of the information was low quality, lacking information size 
+and poor representation of information testing. Managing exceptionally huge datasets that require appropriated methodologies was 
+likewise an issue when information was mined. At long last, what else I thought was troublesome was that the handling of huge, mind 
+boggling and unstructured information and putting it into an organized configuration. 
+
+Information pre-handling is an information mining procedure which requires changing information that is crude into a coherent and 
+reasonable organization, information pre-preparing is basic before we even start mining the information to locate any certifiable 
+arrangements from the crude information. It is likewise fundamental since it prompts a precise forecast of various arrangements and 
+models. Huge information or genuine information is frequently unstructured or deficient, various patterns, and at some point might be 
+conflicting. Likewise, we can see that there is a lacking property estimation, which are the motivation behind why the information winds 
+up boisterous implying that it contains blunders or exceptions. Information pre-handling takes care of these issue
 
 ###Methodology
 There are vital steps that need to be achieved in order for the ID3 Tree building algorithm to be achieved. 
