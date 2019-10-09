@@ -33,6 +33,35 @@ tweets, but the numbers of tweets as well. The developer would need to make the 
 would be included. This relates to the language of the tweet, the length of the tweet, the contents of the tweet, the number of followers 
 the individual had, and what timeframe will be analysed to determine the most appropriate and accurate result.
 
+###3. __How would you validate these approaches?__
+The most logical and appropriate way to validate these approaches would be to execute the approaches using the same datasets (training 
+and test). There are a few methods that can be used to determine the performance of the selected approach, such as; the Holdout method, 
+Cross-validation method and the Bootstrap method (Linkopling University, 2016).
+
+####Holdout Method
+The Holdout method splits the data into two sets of data (the training and testing datasets). The most common split for this method is 
+70% training, 30% testing, however if the split is not randomised, the data samples may not be an accurate representation of the 
+approach. This method only produces an estimate of the classifier/approach and it can become more reliable if the method is repeated 
+with various subsamples of training and testing data. This can be achieved in one of two ways; setting the seed to a specific number so 
+that the data is split the same way either time and the end user must manually change the number to receive different results. The 
+alternative way is to use a random seed which eiminates the manual input and potential bias within the data split. 
+
+####Cross-validation Method
+The Cross-validation method avoids overlapping test sets and in most cases the datasets are put through the stratification method before 
+the cross-validation method. Previous tests have shown that the best performing method for evaluation is the "stratified ten-fold cross-
+validation method" (Linkopling University, 2016). This method produces both an acurracy and error rate (which is derived from the 
+average to yield the overall error estimate).
+
+####Bootstrap Method
+Unlike the Cross-validation method, the Bootstrap method uses a sampling method that replaces data to from the training set. A sample of 
+the dataset that is used for training the model consists of *n* instances *n* times while including replacement techniques to form the 
+new dataset of *n* instances. The instances that do not occur in the training dataset are used in the testing dataset. This method uses 
+a combination of the error estimate and the resubstitution error to produce an error rate.
+
+Therefore at least one of these methods should be used to validate the two approaches. In an ideal world, all three methods, as well as 
+other alternative methods should be used to evaluate the performance of each approach. In using multiple methods to evaluate the 
+approaches, they can ultimately be improved to produce the best possible solution to the problem at hand.
+
 ###4. __Discuss the ethical and social consequences of this study__
 When collecting data from Twitter there are several ethical and social consequences that may arise from this study. The first potential 
 consequence would be that personal information about the individual could be collected in the data retrieval process. In the perfect 
@@ -47,10 +76,17 @@ organisations that use social media applications for marketing purposes. This ra
 ethically and socially acceptable and appropriate, as there can be several consequences for individuals if their data and information 
 is misused, including identity theft and misuse of personal data for company gains or profits.
 
+
 ###References
 Jenders, M., Kasneci, G. & Naumann, F. 2013, 'Analyzing and Predicting Viral Tweets', *Proceedings of the 22nd International Conference 
 on World Wide Web*, pp. 657-664.
-Linkopling University, n.d., Data Mining Evaluation of a Classifier, *Subject TMN033: Introduction to Data Mining*, lecture notes, 
+Linkopling University, 2016, Data Mining Evaluation of a Classifier, *Subject TMN033: Introduction to Data Mining*, lecture notes, 
 Sweden, viewed 9 October 2019, <http://staffwww.itn.liu.se/~aidvi/courses/06/dm/lectures/lec6.pdf>.
+Karsligil, O. 2018, *What are ethical issues in data mining?*, Quora, viewed 7 October 2019, <https://www.quora.com/What-are-ethical-
+issues-in-data-mining>.
 Sayce, D. 2019, *Number of tweets per day?*, David Sayce, viewed 7 October 2019, <https://www.dsayce.com/social-media/tweets-day/>.
 Twitter, 2019, *Docs - Twitter Developers*, Twitter, viewed 6 October 2019, <https://developer.twitter.com/en/docs>.
+
+###Appendix
+GitHub Respository: https://github.com/jmanning21/31005_MachineLearning_Python/blob/master/Assignment_3_12875795.ipynb
+Plain text: https://github.com/jmanning21/31005_MachineLearning_Python/blob/master/Assignment_3_12875795_PLAIN.txt
