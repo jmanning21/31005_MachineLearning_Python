@@ -1,0 +1,56 @@
+#Assignment 3: Take Home Exam
+###Julia Manning | 12875795
+
+##Selected Question: Question 3
+*Marketing or advertising companies would be very interested in being able to predict whether a Twitter message will spread as a meme 
+or not, and even better, construct it so that it will spread. Why is this a hard problem to solve? Describe two approaches using data 
+analytics to predict whether a tweet will go viral or not. How would you validate these approaches? Discuss the ethical and social 
+consequences of this study.*
+
+###1. __Why is this a hard problem to solve?__
+There are multiple aspects that need to be considered when solving this problem. One of the major problems is retrieving the data. 
+According to Sayce (2019), there are roughly 500 million tweets sent every day, therefore making it difficult to retrieve such a large 
+number of data within a short amount of time, as the life-span of each tweet is relatively short, only lasting 24 minutes before it 
+becomes less relevant. The tweets are also in a non-structured format which makes it more difficult to retrieve the data compared to the 
+traditional structured format, however Twitter does supply information in relation to API calls. These API calls make the retrieval of 
+data easier for the developer and consist of multiple options such as:
+- Search for historical tweets,
+- Monitoring account activity,
+- Filter real-time tweets, 
+- Build customised Direct Messages, and
+- Embedding tweets and timelines into websites (Twitter, 2019).
+
+The second problem is handling the large amounts of data made available. With this problem comes the flow-on effect of a large 
+computational cost. The proposed method would have to not only convert the unstructured data into a structured and readable format, but 
+it would also have to determine what is deemed a "viral" tweet in creating relationships to the data with ther factors. These factors 
+include the number of followers, the number of retweets and the number of mentions for each individual user or their tweets. Due to the 
+large size of the assumed dataset, this process would take a significant amount of time to compute and process, in order to receive any 
+output.
+
+The third problem is filtering the large dataset into a reasonable and legitimate size without placing any bias or manipulation strategies 
+on the dataset. As the dataset is large in size, there would need to be some sort of filtering applied not only the the contents of the 
+tweets, but the numbers of tweets as well. The developer would need to make the decision on which the filtering occurred and what tweets 
+would be included. This relates to the language of the tweet, the length of the tweet, the contents of the tweet, the number of followers 
+the individual had, and what timeframe will be analysed to determine the most appropriate and accurate result.
+
+###4. __Discuss the ethical and social consequences of this study__
+When collecting data from Twitter there are several ethical and social consequences that may arise from this study. The first potential 
+consequence would be that personal information about the individual could be collected in the data retrieval process. In the perfect 
+scenario, any personal information would not be collected, and the tweets would be anonymised. However, quite often individuals have 
+multiple social media accounts connected to each other and information could be collected unknowingly throughout the data collection 
+stage. This additional collected information could de-anonymise the individual and their tweets, therefore making their personal 
+information readily available to others without them knowing. This example raises the concern of privacy around the process of 
+retrieving these tweets from individuals, as either approach could be used to exploit the data and information collected from the user.
+
+It is also difficult to monitor and regulate the data and information that is being collected by individuals, groups and third-party 
+organisations that use social media applications for marketing purposes. This raises the question as to whether these approaches are 
+ethically and socially acceptable and appropriate, as there can be several consequences for individuals if their data and information 
+is misused, including identity theft and misuse of personal data for company gains or profits.
+
+###References
+Jenders, M., Kasneci, G. & Naumann, F. 2013, 'Analyzing and Predicting Viral Tweets', *Proceedings of the 22nd International Conference 
+on World Wide Web*, pp. 657-664.
+Linkopling University, n.d., Data Mining Evaluation of a Classifier, *Subject TMN033: Introduction to Data Mining*, lecture notes, 
+Sweden, viewed 9 October 2019, <http://staffwww.itn.liu.se/~aidvi/courses/06/dm/lectures/lec6.pdf>.
+Sayce, D. 2019, *Number of tweets per day?*, David Sayce, viewed 7 October 2019, <https://www.dsayce.com/social-media/tweets-day/>.
+Twitter, 2019, *Docs - Twitter Developers*, Twitter, viewed 6 October 2019, <https://developer.twitter.com/en/docs>.
