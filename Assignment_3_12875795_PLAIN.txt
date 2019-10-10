@@ -46,7 +46,12 @@ These features are then given a weighting, and together with each tweet’s vect
 tweet has of going viral. Further, the “viral score” can be applied with a generalised sigmoid activation function to produce the 
 probability score.
 
-2. The second approach is derived from Marukatat’s (2016) approach of using a Naïve Bayes classifier.
+2. The second approach is derived from Marukatat’s (2016) approach of using a Naïve Bayes classifier. This classifier’s prediction is 
+calculated based off the probability of each of the classes based on the selected attributes in a new case. These attributes are stated 
+as being independent from one another and the probability is calculated through the randomised training dataset. Although the results 
+shown in the tests performed by Marukatat (2016) display other classifiers such as the decision-tree, have a higher accuracy percentage, 
+the Naïve Bayes classifier has a greater capability to handle larger datasets, which is ideal for this problem. The accuracies from the 
+Naive Bayes classifier presented by Marukatat (2016) show an average of 84% accuracy across all the tests.
 
 ###3. __How would you validate these approaches?__
 The most logical and appropriate way to validate these approaches would be to execute the approaches using the same datasets (training 
