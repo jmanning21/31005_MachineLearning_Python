@@ -33,6 +33,21 @@ tweets, but the numbers of tweets as well. The developer would need to make the 
 would be included. This relates to the language of the tweet, the length of the tweet, the contents of the tweet, the number of followers 
 the individual had, and what timeframe will be analysed to determine the most appropriate and accurate result.
 
+###2. __Describe two approaches using data analytics to predict whether a tweet will go viral or not.__
+Jenders et.al (2013) states that there are multiple variables to consider when determining whether a tweet will go viral or not. Through 
+experiments they were able to recognise a strong relationship with the number of followers and average number of retweets, and the 
+length of tweet and average number of retweets.
+
+1.	The first approach is derived from the Generalised Linear Model (GLM) described by Jenders et.al (2013). This approach determines 
+the probability that the number of retweets that a specific tweet will receive (i.e. the probability that the tweet will go viral) above 
+the pre-defined threshold. The model will train on a given set of individual tweets which are randomly split from the dataset, as well 
+as their associated features which include the number of followers and length of the tweets related to the average number of retweets. 
+These features are then given a weighting, and together with each tweet’s vector, a score is created to determine the potential the 
+tweet has of going viral. Further, the “viral score” can be applied with a generalised sigmoid activation function to produce the 
+probability score.
+
+2. The second approach is derived from Marukatat’s (2016) approach of using a Naïve Bayes classifier.
+
 ###3. __How would you validate these approaches?__
 The most logical and appropriate way to validate these approaches would be to execute the approaches using the same datasets (training 
 and test). There are a few methods that can be used to determine the performance of the selected approach, such as; the Holdout method, 
@@ -75,7 +90,6 @@ It is also difficult to monitor and regulate the data and information that is be
 organisations that use social media applications for marketing purposes. This raises the question as to whether these approaches are 
 ethically and socially acceptable and appropriate, as there can be several consequences for individuals if their data and information 
 is misused, including identity theft and misuse of personal data for company gains or profits.
-
 
 ###References
 Jenders, M., Kasneci, G. & Naumann, F. 2013, 'Analyzing and Predicting Viral Tweets', *Proceedings of the 22nd International Conference 
